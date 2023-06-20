@@ -1,0 +1,43 @@
+addi x5 x0 0
+auipc x6 65536
+addi x6 x6 -4
+auipc x7 65536
+addi x7 x7 16
+slli x28 x5 2
+add x29 x6 x28
+lw x30 0(x29)
+beq x30 x0 20
+add x31 x7 x28
+sw x30 0(x31)
+addi x5 x5 1
+jal x0 -28
+jal x1 16
+addi x10 x0 10
+add x11 x0 x0
+ecall
+addi x2 x2 -4
+sw x1 0(x2)
+auipc x10 65536
+addi x10 x10 -76
+jal x1 40
+addi x11 x0 10
+addi x10 x0 11
+ecall
+auipc x10 65536
+addi x10 x10 -72
+jal x1 16
+lw x1 0(x2)
+addi x2 x2 4
+jalr x0 x1 0
+lw x5 0(x10)
+bne x5 x0 8
+jalr x0 x1 0
+add x5 x10 x0
+lw x11 0(x5)
+addi x10 x0 1
+ecall
+addi x11 x0 32
+addi x10 x0 11
+ecall
+addi x10 x5 4
+jal x0 -44

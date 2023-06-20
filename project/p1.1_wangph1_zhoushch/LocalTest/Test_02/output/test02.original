@@ -1,0 +1,43 @@
+addi t0 x0 0
+la t1 source
+-
+la t2 dest
+-
+slli t3 t0 2
+add t4 t1 t3
+lw t5 0 t4
+beq t5 x0 exit
+add t6 t2 t3
+sw t5 0 t6
+addi t0 t0 1
+jal x0 loop
+jal ra print_lists
+addi a0 x0 10
+add a1 x0 x0
+ecall
+addi sp sp -4
+sw ra 0 sp
+la a0 source
+-
+jal ra print_list
+addi a1 x0 10
+addi a0 x0 11
+ecall
+la a0 dest
+-
+jal ra print_list
+lw ra 0 sp
+addi sp sp 4
+jr ra
+lw t0 0 a0
+bne t0 x0 printMeAndRecurse
+jr ra
+add t0 a0 x0
+lw a1 0 t0
+addi a0 x0 1
+ecall
+addi a1 x0 32
+addi a0 x0 11
+ecall
+addi a0 t0 4
+jal x0 print_list

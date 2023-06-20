@@ -1,0 +1,5 @@
+addi t0 t3 t3
+jal
+ori t2 x99 0xAB
+bne t0 t1 not_exist
+addi t1 t2 0x80808080

@@ -1,0 +1,11 @@
+0	main
+84	map
+136	done
+156	square
+164	decrement
+172	create_default_list
+196	loop
+248	print_list
+256	print_me_and_recurse
+292	print_newline
+308	malloc

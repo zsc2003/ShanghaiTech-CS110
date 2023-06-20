@@ -1,0 +1,7 @@
+nx: 1024
+ny: 128
+iters: 60000
+density: 1
+viscosity: 0.02
+velocity: 0.05
+type: 1

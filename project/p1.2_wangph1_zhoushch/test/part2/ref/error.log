@@ -1,0 +1,5 @@
+Error - alignment fault at address 00040001
+Error - segmentation fault at address 00000000
+Invalid Machine Code: 0x10852063
+Can you think of any others?
+Exited with error code 4.

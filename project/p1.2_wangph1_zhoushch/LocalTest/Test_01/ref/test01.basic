@@ -1,0 +1,6 @@
+or x12 x13 x5
+jalr x0 x6 0
+slt x7 x7 x8
+lui x28 123
+lb x5 0(x8)
+jal x1 -20

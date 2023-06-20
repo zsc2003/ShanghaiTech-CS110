@@ -1,0 +1,16 @@
+#/bin/sh
+
+output=$(valgrind --tool=memcheck --leak-check=full --track-origins=yes --error-exitcode=64 $@ 2>&1)
+retval=$?
+if [ $retval -eq 0 ]
+then
+    break;
+elif [ $retval -eq 64 ]
+then
+    echo "$output"
+else
+    # The program is throw something else
+    break;
+fi
+
+exit $retval

@@ -1,0 +1,109 @@
+LPS:
+    addi sp, sp, -4
+    sw ra, 0(sp) # ra that come from main
+    addi a1, x0, 0 
+    li t0, 0
+    jal ra, strlen 
+    li a2, 1
+    beq a2, a1, ret_main 
+    jal ra, outer
+    ret_main:
+        mv a0, a2
+        lw ra, 0(sp)
+        addi sp, sp, 4
+        jr ra 
+strlen:
+    addi sp, sp, -4
+    sw ra, 0(sp)
+        add t1, a1, a0 
+        lb t2, 0(t1)
+        beq t2, t0, end_strlen 
+        addi a1, a1, 1
+        j strlen_loop
+    end_strlen:
+        lw ra, 0(sp) 
+        addi sp, sp, 4
+        ret
+outer:
+    addi sp, sp, -4
+    sw ra, 0(sp)
+    li t0, 0 
+    addi a7, a1, -1
+    outer_loop:
+        beq t0, a7, end_outer
+        add t1, t0, a0
+        lb t2, 0(t1)
+        addi t1, t1, 1 
+        lb t3, 0(t1)
+        addi t1, t1, -2 
+        lb t4, 0(t1)
+        jal ra, even 
+        jal ra, max
+        jal ra, odd
+        jal ra, max
+        addi t0, t0, 1
+        j outer_loop
+    end_outer:
+        lw ra, 0(sp)
+        addi sp, sp, 4
+        ret
+even:
+    addi sp, sp, -4
+    sw ra, 0(sp)
+    li a3, 0
+    li a4, 0
+    bne t2, t3, end_even 
+    even_loop:
+        sub a5, t0, a4 
+        blt a5, x0, end_even
+        add a6, t0, a4
+        addi a6, a6, 1 
+        bge a6, a1, end_even
+        add a5, a5, a0
+        add a6, a6, a0
+        lb t6, 0(a5)
+        lb t5, 0(a6)
+        bne t6, t5, end_even
+        addi a3, a3, 2
+        addi a4, a4, 1
+        j even_loop
+
+    end_even:
+        lw ra, 0(sp)
+        addi sp, sp, 4
+        ret
+odd:
+    addi sp, sp, -4
+    sw ra, 0(sp)
+    li a3, 1 
+    li a4, 1
+    bne t4, t3, end_odd
+    odd_loop:
+        sub a5, t0, a4
+        blt a5, x0, end_odd
+        add a6, t0, a4
+        bge a6, a1, end_odd
+        add a5, a5, a0 
+        add a6, a6, a0
+        lb t6, 0(a5)
+        lb t5, 0(a6)
+        bne t6, t5, end_odd
+        addi a3, a3, 2
+        addi a4, a4, 1
+        j odd_loop
+    end_odd:
+        lw ra, 0(sp)
+        addi sp, sp, 4
+        ret
+max:
+    addi sp, sp, -4
+    sw ra, 0(sp)
+    blt a2, a3, swap
+    lw ra, 0(sp)
+    addi sp, sp, 4
+    ret
+    swap:
+        mv a2, a3
+        lw ra, 0(sp) # load ra
+        addi sp, sp, 4
+        ret # return to outer loop

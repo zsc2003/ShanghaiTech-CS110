@@ -1,0 +1,1 @@
+./lbm data/params/evaluate.params data/obstacles/CS110.dat results
