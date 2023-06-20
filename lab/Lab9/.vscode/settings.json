@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.md": "markdown",
+        "assert.h": "c",
+        "emmintrin.h": "c"
+    }
+}
