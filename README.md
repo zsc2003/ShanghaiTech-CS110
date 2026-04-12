@@ -4,10 +4,10 @@ ShanghaiTech CS110 Computer Architecture, Spring 2023.
 ---
 
 Course website could refer(modify the number for other years):
-- years before 2022
+- From 2016 to 2022
 
 https://robotics.shanghaitech.edu.cn/courses/ca/22s/
 
-- years after 2023
+- From 2023 to 2025
 
 https://toast-lab.sist.shanghaitech.edu.cn/courses/CS110@ShanghaiTech/Spring-2023/index.html
